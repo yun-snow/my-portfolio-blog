@@ -1,63 +1,71 @@
-# Astro Starter Kit: Blog
+# Portfolio Website
 
-```sh
-npm create astro@latest -- --template blog
+Hey there! Welcome to my portfolio website repository. I'm Sanjib Roy, an **Experienced Full Stack Software Developer** skilled in **JavaScript**, **React.js**, **Next.js**, **Node.js**, **TypeScript**, **Electron.js**, **MongoDB**, **Ruby**, **Ruby on Rails**, and **PostgreSQL**, with over **4 years of remote work experience**. This portfolio is my digital space to share my **blogs**, **projects**, and my evolving journey through the fascinating world of **software development**.
+
+## 🛠️ Technologies used
+
+- ⚡️ Astro.js (^4.10.1)
+- 🔥 React.js
+- 🎨 Tailwind CSS
+- 🔍 TypeScript
+
+## Installation
+
+Want to check out the project on your own machine? Here's how you can get started:
+
+1. Clone the repository
+```bash
+git clone git@github.com:sanjibroy360/portfolio-sanjib.git
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+2. Go to the project directory:
 
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+```bash
+cd sanjib-roy-developer-portfolio
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+3. Install Packages
+```bash
+yarn install
+```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+4.  Then, you can run it locally in development mode
+```bash
+yarn dev
+```
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+#### *Troubleshooting: Could not load the "sharp" module using the darwin-arm64 runtime
 
-Any static assets, like images, can be placed in the `public/` directory.
+If you encounter the error message "Could not load the 'sharp' module using the darwin-arm64 runtime," follow these steps to resolve the issue:
 
-## 🧞 Commands
+#### Possible Solution:
 
-All commands are run from the root of the project, from a terminal:
+- **Ensure optional dependencies can be installed:**
+    - Ensure optional dependencies can be installed:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+      - Using npm:
 
-## 👀 Want to learn more?
+      ```bash
+       npm install --include=optional sharp
+      ```
+      - Using yarn:
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+      ```bash
+      yarn add sharp --ignore-engines
+      ```
 
-## Credit
+## Contribution
+Your contributions are welcome! Whether you'd like to fork this repository, open issues, or submit pull requests, I'm eager to collaborate and improve my portfolio. I appreciate your suggestions for enhancing this project and contributing to the developer community's knowledge sharing.
+## Connect with Me
+I'd love to connect with you! You can find me on:
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+- GitHub: [yun-snow](https://github.com/yun-snow) <br/>
+- LinkedIn: [Youenn Esnault](https://www.linkedin.com/in/youenn-esnault/) <br/>
+- Website: [sanjibroy.com](https://sanjibroy.com/) <br/>
+- Email: [esnaultyouenn@gmail.com](mailto:esnaultyouenn@gmail.com) <br/>
+
+## License
+
+Feel free to use this repository for learning and personal purposes. If you decide to publish it online, please ensure to include a mandatory attribution link to [sanjibroy.com](https://sanjibroy.com/).
+For more details, view the [MIT License](https://github.com/sanjibroy360/sanjib-roy-developer-portfolio/blob/master/LICENSE).
+

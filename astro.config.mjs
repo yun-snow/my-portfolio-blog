@@ -1,35 +1,74 @@
-// @ts-check
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
+import robotsTxt from "astro-robots-txt";
+import { astroImageTools } from "astro-imagetools";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import partytown from "@astrojs/partytown";
 
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import { defineConfig, fontProviders } from 'astro/config';
+const prettyCodeOptions = {
+  theme: "dark-plus",
+  showLineNumbers: true, // Enable line numbers
+};
 
-// https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
-	integrations: [mdx(), sitemap()],
-	fonts: [
-		{
-			provider: fontProviders.local(),
-			name: 'Atkinson',
-			cssVariable: '--font-atkinson',
-			fallbacks: ['sans-serif'],
-			options: {
-				variants: [
-					{
-						src: ['./src/assets/fonts/atkinson-regular.woff'],
-						weight: 400,
-						style: 'normal',
-						display: 'swap',
-					},
-					{
-						src: ['./src/assets/fonts/atkinson-bold.woff'],
-						weight: 700,
-						style: 'normal',
-						display: 'swap',
-					},
-				],
-			},
-		},
-	],
+  site: "https://yun-snow.github.io",
+  base: "/my-portfolio-blog",
+  trailingSlash: "never",
+  markdown: {
+    extendDefaultPlugins: true,
+    syntaxHighlight: false,
+    rehypePlugins: [
+      [rehypePrettyCode, prettyCodeOptions],
+      rehypeSlug,
+      rehypeAutolinkHeadings,
+    ],
+  },
+
+  integrations: [
+    react(),
+    tailwind({ applyBaseStyles: false }),
+    robotsTxt({
+      policy: [
+        {
+          userAgent: "Googlebot",
+          allow: "/",
+          disallow: ["/cdn-cgi/"],
+          crawlDelay: 2,
+        },
+        {
+          userAgent: "Bingbot",
+          allow: "/",
+          disallow: ["/cdn-cgi/"],
+          crawlDelay: 2,
+        },
+        {
+          userAgent: "AhrefsBot",
+          allow: "/",
+          disallow: ["/cdn-cgi/"],
+          crawlDelay: 2,
+        },
+        {
+          userAgent: "*",
+          allow: "/",
+          crawlDelay: 10,
+        },
+      ],
+    }),
+    astroImageTools,
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+    sitemap({
+      customPages: [
+        "https://yun-snow.github.io/my-portfolio-blog/rss.xml",
+        "https://yun-snow.github.io/my-portfolio-blog/favicon.ico",
+      ],
+    }),
+  ],
 });

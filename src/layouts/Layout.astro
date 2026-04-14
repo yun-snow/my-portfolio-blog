@@ -1,0 +1,229 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import { Config } from "~/config";
+import Header from '~/components/Header';
+import Footer from '~/components/Footer.astro';
+import ThemeToggler from "~/components/ThemeToggler"
+import '~/styles/global.css';
+
+
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?:string;
+  og_title?: string;
+  og_description?: string;
+  og_type?: string;
+  og_image?: string;
+  blog_author?: string;
+  blog_publishedOn?: string;
+}
+
+const {
+  title = `${Config.me.name} | Software Developer`,
+  description = Config.app.description,
+  og_title = `${Config.me.name} | Software Developer`,
+  og_description = Config.app.description,
+  og_type = "website",
+  og_image = `${Config.website}${Config.og.image}`,
+  blog_author = Config.app.author,
+  blog_publishedOn,
+  keywords= Config.app.keywords,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)?.toString();
+---
+
+<!doctype html>
+<html class="bg-base-100 text-base-content overflow-y-scroll" lang="en">
+  <head>
+    <!-- Google tag (gtag.js) for Google analytics -->
+    <script is:inline  src="https://www.googletagmanager.com/gtag/js?id=G-R1525FDSWP">
+    </script>
+
+    <script is:inline >
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-R1525FDSWP");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} data-rh="true">
+    <meta property="author" content={blog_author} />
+    <meta property="publish-date" content={blog_publishedOn} />
+    
+    <meta property="og:title" content={og_title} />
+    <meta property="og:description" content={og_description} />
+    <meta property="og:type" content={og_type} />
+    <meta property="og:image" content={og_image} />
+    <meta property="og:url" content={Astro.request.url} />
+    <meta property="og:site_name" content={Config.app.site_name} />
+    <meta property="og:image:alt" content={og_title} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:widgets:new-embed-design" content="on" />
+    <meta name="twitter:site" content={Config.app.twitter_handle} />
+    <meta name="twitter:creator" content={Config.app.twitter_handle} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og_image} />
+    <meta name="twitter:image:alt" content={og_title} />
+
+    <meta name="author" content={Config.app.author} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="apple-touch-icon" href="/touch-icons/main-icon.png">
+    <link rel="icon" type="image/png" href='/icon.png' />
+    <link
+      rel="stylesheet"
+      media="print" 
+      onload="this.media='all'"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css"
+    />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title={title} href="/rss.xml"/>
+    <ViewTransitions />
+  </head>
+
+
+  <body class="relative bg-app">
+    <ThemeToggler/>
+    <section
+      class="mx-auto md:w-10/12 lg:w-full w-full flex min-h-screen max-w-3xl flex-col container gap-3 md:gap-7"
+    >
+      <Header currentPath={currentPath} />
+      
+      <section class="relative grid grid-cols-1 lg:py-0 px-5 py-2 md:py-2 min-h-screen">
+        <slot />
+        <Footer/>
+      </section>
+    </section>
+    <script>
+      const defaultTheme = "dark";
+      document.addEventListener("DOMContentLoaded", updateTheme);
+      document.addEventListener("astro:after-swap", updateTheme);
+
+      function updateTheme() {
+        const theme = localStorage.getItem("theme") || defaultTheme; 
+        document.documentElement.setAttribute("data-theme", theme);
+
+        const themeToggle = document.querySelector("#theme-toggle-btn input[type='checkbox']") as HTMLInputElement | null;
+
+        if(themeToggle) {
+          themeToggle.checked = theme === "dark"; // Adjust this based on your theme names
+
+          themeToggle.addEventListener("change", function(this: HTMLInputElement) {
+            const newTheme = this?.checked ? "dark" : "light";
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+            localStorage.setItem("astroErrorOverlayTheme", newTheme);
+          });
+        }
+      }
+    </script>
+    <script>
+      function initNavScript() {
+        const mobileNavMenuBtn = document?.getElementById('mobile-nav-menu-btn');
+        const closeNavPaneBtn = document?.getElementById('mobile-close-nav-pane-btn');
+        const mobileNavPane = document?.getElementById('mobile-nav-pane');
+        const mobileNavOverlay = document?.getElementById('mobile-nav-overlay');
+        const mobileNavPaneLinks = document?.querySelectorAll('#mobile-nav-pane .mobile-nav-pane-link');
+
+        function showNavPane(e: React.MouseEvent<HTMLElement>| MouseEvent | Event) {
+          e?.stopPropagation();
+          mobileNavPane?.classList?.remove("hide");
+          mobileNavOverlay?.classList?.remove("hidden");
+          mobileNavPane?.classList?.add("show");
+          closeNavPaneBtn?.classList?.remove("hidden");
+          mobileNavMenuBtn?.classList?.add("hidden");
+          mobileNavOverlay?.classList?.add("block");
+        }
+
+        function closeNavPane(e: React.MouseEvent<HTMLElement>| MouseEvent | Event) {
+          e?.stopPropagation();
+
+          mobileNavPane?.classList?.remove("show");
+          mobileNavPane?.classList?.add("hide");
+          mobileNavMenuBtn?.classList?.remove("hidden");
+          closeNavPaneBtn?.classList?.add("hidden");
+          mobileNavOverlay?.classList?.add("hidden");
+          mobileNavOverlay?.classList?.remove("block");
+        }
+
+        mobileNavMenuBtn?.addEventListener('click', (e) => showNavPane(e));
+        closeNavPaneBtn?.addEventListener('click', (e) => closeNavPane(e));
+        mobileNavOverlay?.addEventListener('click', (e) => closeNavPane(e))
+        mobileNavPaneLinks?.forEach(navPaneLink => {
+          return navPaneLink?.addEventListener('click', (e) => closeNavPane(e))
+        })
+      };
+
+      // Initialize on first load
+      initNavScript()
+
+      // Re-initialize after swapping pages
+      document.addEventListener("astro:after-swap", initNavScript)
+    </script>
+    <script >
+      function initCopyBtnScript() {
+        const copyButtonLabel = "Copy";
+        const codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+        for (const codeBlock of codeBlocks) {
+          const wrapper = document?.createElement("div");
+          wrapper.style.position = "relative";
+
+          const copyButton = document.createElement("button");
+          copyButton.className = "copy-code";
+          copyButton.innerHTML = copyButtonLabel;
+
+          codeBlock.setAttribute("tabindex", "0");
+          codeBlock.appendChild(copyButton);
+          // wrap codebock with relative parent element
+          codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+          wrapper.appendChild(codeBlock);
+
+          copyButton.addEventListener("click", async () => {
+            await copyCode(codeBlock, copyButton);
+          });
+        }
+
+        async function copyCode(block:any, button:any) {
+          if(!button || !block) return;
+
+          const code = block?.querySelector("code");
+          const text = code?.innerText;
+
+          await navigator.clipboard.writeText(text);
+
+          // visual feedback that task is completed
+          button.innerText = "Copied!";
+
+          let timerId = setTimeout(() => {
+            button.innerText = copyButtonLabel;
+            clearTimeout(timerId);
+          }, 900);
+        }
+      };
+
+      // Initialize on first load
+      initCopyBtnScript()
+
+      // Re-initialize after swapping pages
+      document.addEventListener("astro:after-swap", initCopyBtnScript)
+    </script>
+   
+    </body>
+  
+</html>
