@@ -1,6 +1,4 @@
 // import ogCard from "/og-images/og-card.png";
-/* import avatarSamkit from "~/assets/Images/testimonials/samkit-jain.webp";
-import avatarJijo from "~/assets/Images/testimonials/jijo-bose.webp"; */
 
 const RESUME_LINK: string = "https://drive.google.com/file/d/15LzVVSWv5RQ1kb0RM-vkGDmtu2nGt0--/view?usp=sharing";
 
@@ -151,12 +149,6 @@ const Pages: LinkObj[] = [
   },
 
   {
-    title: "RSS feed",
-    url: "/rss.xml",
-    external: true,
-    displayInDrawerOnly: true,
-  },
-  {
     title: "esnaultyouenn@gmail.com",
     url: "mailto:esnaultyouenn@gmail.com",
     external: true,
@@ -170,8 +162,10 @@ const WorkExperiences: WorkExperienceObj[] = [
     title: "Machine Learning Researcher",
     company: "Centre d'études et de recherche en informatique et communications (CEDRIC) - CNAM",
     contributions: [
-      "Built a fully responsive website using Next.js and delivered it before the deadline.",
-      "Integrated Google Analytics and HubSpot for traffic tracking and lead capture.",
+      "Machine Learning research project between CEDRIC and the Quebec Heart and Lung Institute (IUCPQ).",
+      "Exchanged with medical teams to translate clinical requirements into technical specifications for genetic data analysis.",
+      "Managed the study while ensuring the security of highly sensitive physical and genomic datasets.",
+      "Identified significant variables for asthma case modeling, enabling simplified interpretation for medical research staff.",
     ],
   },
   {
@@ -179,11 +173,9 @@ const WorkExperiences: WorkExperienceObj[] = [
     title: "Deep Learning Researcher",
     company: "Smart Infrastructure Lab - Yonsei University",
     contributions: [
-      "Developed the Miru desktop app almost from scratch, creating an easy-to-use time-tracking system with automatic idle-state detection. Ensured it works seamlessly with the Miru web app for generating invoices.",
-      "Developed the Miru marketing website with React.js, integrating Google Analytics and HubSpot for traffic tracking and lead capture.",
-      "Contributed as a full stack developer to the Miru web app, a time-tracking and invoicing application. Involved in developing key features such as the PTO module, Organization settings, authentication flow, and refactoring pages related to time-tracking. Also, actively addressed bug fixes and reported issues.",
-      "Contributed to the development of the Tlatocash app, a payment wallet application built using React Native. Implemented features like sharing QR codes, scanning QR codes, and enabling seamless payments to saved contacts on the mobile app.",
-      "Contributed to various client projects.",
+      "Developed Deep Learning models for detecting cracks in concrete walls in collaboration with on-site building technicians.",
+      "Data extraction from drone imagery, preprocessing, and CNN development (Python, PySpark, Keras, Scikit-Learn, TensorFlow, Roboflow).",
+      "Developed a detection model PoC usablee for drone-based building inspections.",
     ],
   },
   {
@@ -191,20 +183,19 @@ const WorkExperiences: WorkExperienceObj[] = [
     title: "Incubating startup lead",
     company: "IMT Starter & C-19",
     contributions: [
-      "Undertook team lead responsibilities and successfully led high-priority sprints.",
-      "Contributed to redesigning and optimizing the entire Juvoxa doctor, patient, and partner application.",
-      "Migrated the vintage react code to the latest React hooks format and refactored React components to optimize the component rendering.",
-      "Developed several important features like prescribing any solution to patients, creating fixed and scheduled programs, sending reports to doctors, etc.",
-      "Designed the dashboard page for doctors where doctors can check patients' vitals, most prescribed contents, programs, etc.",
+      "Led project development using Agile methodologies, including functional design and business planning.",
+      "Conducted requirement gathering and interviews with more than a hundred potential clients.",
+      "Pitched the project to the incubator directors.",
+      "Won 1st prize in the competition, securing €6,000 in funding.",
     ],
   },
   {
     years: "Apr 2020 - Jun 2020",
-    title: "Full Stack Developer",
-    company: "Kasetsart University",
+    title: "Data Analytics and Knowledge Engineering",
+    company: "NAiST Laboratory - Kasetsart University",
     contributions: [
-      "Contributed as a full stack developer to the client project and in-house projects like Neeto KB, Neeto Auth.",
-      "Contributed to implementing Single-Sign-On(SSO). Wrote functional, unit, and integration tests for application quality assurance.",
+      "Collaborated with remote sensing engineer/geographer to address wildfire challenges in Southeast Asia.",
+      "Extracted, cleaned, and visualized satellite imagery data for wildfire prevention map (SQL, JavaScript, PHP).",
     ],
   },
 ];
@@ -261,21 +252,19 @@ const Skills: SkillObj[] = [
 
 /* const Testimonials: TestimonialsObj[] = [
    {
-    avatar: avatarJijo.src,
-    role: "Senior Software Developer at Saeloun",
-    name: "Jijo Bose",
-    message: `I have worked with Sanjib to build a desktop app built using ElectronJS. 
-    
-    Sanjib possesses a deep understanding of the Ruby on Rails, ElectronJS and Typescript. He consistently wrote clean, maintainable, and well-documented code, adhering to best practices and industry standards.`,
-    link: "https://www.linkedin.com/in/sanjibroy360/details/recommendations",
+    avatar: ,
+    role: "",
+    name: "",
+    message: "",
+    link: "",
   },
   {
-    avatar: avatarSamkit.src,
-    role: "Principal Engineer at Juvoxa",
-    name: "Samkit Jain",
+    avatar: ,
+    role: "",
+    name: "",
     message:
-      "Sanjib showed tremendous growth during his tenure at Juvoxa. He is a quick learner and knows JavaScript very well. Able to convert Figma designs into reusable components to the T and regularly employed code optimisation techniques. Apart from the technical requirements, he also showcased managerial qualities by leading sprints for new product features.",
-    link: "https://www.linkedin.com/in/sanjibroy360/details/recommendations",
+      "",
+    link: "",
   }, 
 ];*/
 
@@ -283,22 +272,22 @@ const Projects: ProjectObj[] = [
   {
     appName: "MLOps pipeline",
     url: "",
-    about: "End-to-end ML pipeline with experiment tracking, orchestration, and drift monitoring. Soon to upload on GitHub..",
-    tags: ["Python", "Airflow", "Prefect", "Evidently"],
+    about: "End-to-end ML pipeline with experiment tracking, orchestration, and drift monitoring. Soon to upload on GitHub.",
+    tags: ["Python", "Airflow", "Prefect", "Evidently", "Docker"],
   },
   {
     appName: "Internal company RAG",
     url: "",
-    about: "Trello is a web-based, kanban-style, work management tool.",
-    tags: ["React.js", "Node.js", "Express.js"],
+    about: "Internal conversational genAI template with company information knowledge and data safety measures.",
+    tags: ["Python", "LlamaIndex", "Qdrant", "FastAPI", "Docker"],
   },
   {
-    appName: "Quizzy",
-    url: "https://github.com/sanjibroy360/quizzy-by-sanjibroy360",
+    appName: "Graph RAG",
+    url: "",
     about:
-      "Quiz app lets users create, share quizzes with detailed stats for creators.",
+      "Personal research project on the effects of GraphRAG on performance compared to a classic RAG.",
 
-    tags: ["React.js", "Ruby on Rails"],
+    tags: ["Python", "GraphRAG", "LangChain"],
   },
 ];
 
@@ -307,27 +296,27 @@ export const Config: IConfig = {
     author: "Youenn Esnault",
     site_name: "Youenn Esnault",
     description: `Experienced Full Stack Software Developer skilled in MERN stack, Next.js, Ruby on Rails, with overall ${
-      +getYearsOfExperience("2021-02-01") || "less than 1"
+      +getYearsOfExperience("2025-01-01") || "less than 1"
     }+ ${
-      +getYearsOfExperience("2021-02-01") > 1 ? "years" : "year"
+      +getYearsOfExperience("2025-01-01") > 1 ? "years" : "year"
     } of experience. Portfolio website shared my blogs, projects, journey`,
-    long_description: `Hi, I am Sanjib Roy, a Software Developer with overall ${
-      +getYearsOfExperience("2021-02-01") || "less than 1"
+    long_description: `Hi, I am Youenn Esnault, a Data Scientist with overall  ${
+      +getYearsOfExperience("2025-01-01") || "less than 1"
     }+ ${
-      +getYearsOfExperience("2021-02-01") > 1 ? "years" : "year"
-    } of experience, proficient in JavaScript React.js Next.js Node.js TypeScript Electron.js MongoDB, Ruby Ruby on Rails, and PostgreSQL. I completed my Bachelor of Science in Computer Science (Honours) in 2019. Throughout my career, I have led a couple of teams in developing applications from scratch, managed a couple of projects single-handedly and I love taking on challenging projects that will push me to learn and grow.`,
+      +getYearsOfExperience("2025-01-01") > 1 ? "years" : "year"
+    } of experience, proficient in Python (PySpark, Keras, TensorFlow, Scikit-Learn), R, SQL, Node.js, TypeScript, Electron.js, MongoDB, Ruby, Ruby on Rails, and PostgreSQL. I completed a dual Master's program, an M.Sc in Data Science (Honors) and an Engineering Degree in Computer Science (Honors) in 2023. Throughout my career, I have led and worked on various team and solo projects in Data Science, Machine Learning and Deep Learning. I have worked with experts from diverse sectors (health, construction, environment) and am used to translating business needs into technical solutions. I love taking on challenging projects that will push me to learn and grow.`,
     keywords:
-      "sanjib, sanjib roy, sanjibroy360, fullstack developer, mern stack developer, software developer, software engineer, frontend developer, portfolio, web developer, react developers, rails developer, javascript, sanjib roy official website, sanjib roy portfolio website, raniganj sanjib, west bengal sanjib, sanjib-roy",
+      "youenn",
   },
   me: {
     avatar: "/src/assets/Images/avatar.webp",
     name: "Youenn Esnault",
     about: AboutMe,
-    job: "Full-stack engineer",
-    started: "2021-02-01", // Used to calculate years of experience dynamically
-    yearsOfExperience: getYearsOfExperience("2021-02-01"),
-    stack: "MERN stack and Ruby on Rails",
-    hobby: "gamble my life savings",
+    job: "Data Scientist",
+    started: "2025-01-01", // Used to calculate years of experience dynamically
+    yearsOfExperience: getYearsOfExperience("2025-01-01"),
+    stack: " ",
+    hobby: " ",
     projectLink: "/projects",
     resumeLink: RESUME_LINK,
   },
@@ -336,13 +325,13 @@ export const Config: IConfig = {
     educationDetails: EducationDetails,
     skills: Skills,
   },
-  website: "https://sanjibroy.com",
+  website: "https://yun-snow.github.io/my-portfolio-blog/",
   pages: Pages,
   socials: {
-    GitHub: "https://github.com/sanjibroy360",
-    LinkedIn: "https://www.linkedin.com/in/sanjibroy360/",
-    Email: "mailto:sanjibroy.dev@gmail.com",
-    RSS: "/rss.xml",
+    GitHub: "https://github.com/yun-snow/",
+    LinkedIn: "https://www.linkedin.com/in/youenn-esnault/",
+    Email: "mailto:esnaultyouenn@gmail.com",
+    
   },
   projects: Projects,
   /* testimonials: Testimonials, */

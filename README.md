@@ -1,6 +1,6 @@
-# Portfolio Website
+# Personal Portfolio & Blog
 
-Hey there! Welcome to my portfolio website repository. I'm Sanjib Roy, an **Experienced Full Stack Software Developer** skilled in **JavaScript**, **React.js**, **Next.js**, **Node.js**, **TypeScript**, **Electron.js**, **MongoDB**, **Ruby**, **Ruby on Rails**, and **PostgreSQL**, with over **4 years of remote work experience**. This portfolio is my digital space to share my **blogs**, **projects**, and my evolving journey through the fascinating world of **software development**.
+My personal portfolio and blog where I share projects, write about AI/ML engineering, and document my journey building with LLMs, RAG pipelines, and agentic systems.
 
 ## 🛠️ Technologies used
 
@@ -11,61 +11,34 @@ Hey there! Welcome to my portfolio website repository. I'm Sanjib Roy, an **Expe
 
 ## Installation
 
-Want to check out the project on your own machine? Here's how you can get started:
-
 1. Clone the repository
 ```bash
-git clone git@github.com:sanjibroy360/portfolio-sanjib.git
+git clone git@github.com:YOUR_GITHUB_USERNAME/my-portfolio-blog.git
 ```
 
 2. Go to the project directory:
-
 ```bash
-cd sanjib-roy-developer-portfolio
+cd my-portfolio-blog
 ```
 
-3. Install Packages
+3. Install packages
 ```bash
-yarn install
+npm install
 ```
 
-4.  Then, you can run it locally in development mode
+4. Run locally in development mode
 ```bash
-yarn dev
+npm run dev
 ```
 
-#### *Troubleshooting: Could not load the "sharp" module using the darwin-arm64 runtime
+## Connect
 
-If you encounter the error message "Could not load the 'sharp' module using the darwin-arm64 runtime," follow these steps to resolve the issue:
-
-#### Possible Solution:
-
-- **Ensure optional dependencies can be installed:**
-    - Ensure optional dependencies can be installed:
-
-      - Using npm:
-
-      ```bash
-       npm install --include=optional sharp
-      ```
-      - Using yarn:
-
-      ```bash
-      yarn add sharp --ignore-engines
-      ```
-
-## Contribution
-Your contributions are welcome! Whether you'd like to fork this repository, open issues, or submit pull requests, I'm eager to collaborate and improve my portfolio. I appreciate your suggestions for enhancing this project and contributing to the developer community's knowledge sharing.
-## Connect with Me
-I'd love to connect with you! You can find me on:
-
-- GitHub: [yun-snow](https://github.com/yun-snow) <br/>
-- LinkedIn: [Youenn Esnault](https://www.linkedin.com/in/youenn-esnault/) <br/>
-- Website: [sanjibroy.com](https://sanjibroy.com/) <br/>
-- Email: [esnaultyouenn@gmail.com](mailto:esnaultyouenn@gmail.com) <br/>
+- GitHub: [YOUR_GITHUB_USERNAME](https://github.com/YOUR_GITHUB_USERNAME)
+- LinkedIn: [YOUR_NAME](https://www.linkedin.com/in/YOUR_LINKEDIN)
+- Email: [YOUR_EMAIL](mailto:YOUR_EMAIL)
 
 ## License
 
-Feel free to use this repository for learning and personal purposes. If you decide to publish it online, please ensure to include a mandatory attribution link to [sanjibroy.com](https://sanjibroy.com/).
-For more details, view the [MIT License](https://github.com/sanjibroy360/sanjib-roy-developer-portfolio/blob/master/LICENSE).
+Based on the [Sanjib Roy portfolio template](https://sanjibroy.com/) — used under the MIT License with Attribution. Attribution link is included in the site footer as required.
 
+For details, view the [LICENSE](./LICENSE) file.

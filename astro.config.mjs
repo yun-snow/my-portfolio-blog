@@ -66,7 +66,6 @@ export default defineConfig({
     }),
     sitemap({
       customPages: [
-        "https://yun-snow.github.io/my-portfolio-blog/rss.xml",
         "https://yun-snow.github.io/my-portfolio-blog/favicon.ico",
       ],
     }),
