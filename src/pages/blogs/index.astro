@@ -2,27 +2,133 @@
 import Layout from "../../layouts/Layout.astro";
 import PostBox from "../../components/PostBox.astro";
 import { getCollection } from "astro:content";
-import {Config} from '~/config';
-const posts = (await getCollection("posts")).sort(
+import { Config } from "~/config";
+
+const allPosts = (await getCollection("posts")).sort(
   (a, b) =>
     new Date(b.data.publishedOn).getTime() -
     new Date(a.data.publishedOn).getTime()
 );
+
+const years = [...new Set(allPosts.map((p) => new Date(p.data.publishedOn).getFullYear()))].sort((a, b) => b - a);
 ---
 
-<Layout title=`Blog | ${Config.me.name}` og_type="website" >
+<Layout title={`Blog | ${Config.me.name}`} og_type="website">
   <main class="lg:mt-32 mt-10 mb-12">
-    <h1 class="font-medium text-3xl mb-8 md:mb-14 mt-4">Blogs</h1>
-    {
-      posts.map((post) => (
-        <PostBox
-          title={post.data.title}
-          publishedOn={post.data.publishedOn}
-          summary={post.data.summary}
-          tags = {post.data.tags}
-          href={post.slug}
-        />
-      ))
-    }
+    <h1 class="font-medium text-3xl mb-8 md:mb-10 mt-4">Blogs</h1>
+
+    <div class="flex flex-wrap gap-2 mb-8 items-center">
+      <button
+        data-year="all"
+        class="year-btn active-year px-3 py-1 text-sm border border-dashed border-gray-400 dark:border-gray-600 rounded hover:border-gray-600 dark:hover:border-primary transition-colors"
+      >
+        All
+      </button>
+      {years.map((year) => (
+        <button
+          data-year={year}
+          class="year-btn px-3 py-1 text-sm border border-dashed border-gray-400 dark:border-gray-600 rounded hover:border-gray-600 dark:hover:border-primary transition-colors text-secondary"
+        >
+          {year}
+        </button>
+      ))}
+
+      <div class="ml-auto flex gap-2">
+        <button
+          id="sort-desc"
+          class="sort-btn active-sort px-3 py-1 text-sm border border-dashed border-gray-400 dark:border-gray-600 rounded hover:border-gray-600 dark:hover:border-primary transition-colors"
+        >
+          Newest
+        </button>
+        <button
+          id="sort-asc"
+          class="sort-btn px-3 py-1 text-sm border border-dashed border-gray-400 dark:border-gray-600 rounded hover:border-gray-600 dark:hover:border-primary transition-colors text-secondary"
+        >
+          Oldest
+        </button>
+      </div>
+    </div>
+
+    <div id="posts-list">
+      {allPosts.map((post) => (
+        <div
+          class="post-item"
+          data-year={new Date(post.data.publishedOn).getFullYear()}
+          data-date={new Date(post.data.publishedOn).getTime()}
+        >
+          <PostBox
+            title={post.data.title}
+            publishedOn={post.data.publishedOn}
+            summary={post.data.summary}
+            tags={post.data.tags}
+            href={post.slug}
+          />
+        </div>
+      ))}
+    </div>
+
+    <p id="no-results" class="hidden text-secondary text-sm mt-4">No posts for this year.</p>
   </main>
 </Layout>
+
+<style>
+  .active-year {
+    @apply border-gray-800 dark:border-primary text-primary font-medium;
+  }
+  .active-sort {
+    @apply border-gray-800 dark:border-primary text-primary font-medium;
+  }
+</style>
+
+<script>
+  let activeYear = "all";
+  let activeSort = "desc";
+
+  const postItems = Array.from(document.querySelectorAll<HTMLElement>(".post-item"));
+  const noResults = document.getElementById("no-results")!;
+  const postsList = document.getElementById("posts-list")!;
+
+  function render() {
+    const filtered = postItems.filter(
+      (el) => activeYear === "all" || el.dataset.year === activeYear
+    );
+
+    const sorted = [...filtered].sort((a, b) => {
+      const diff = Number(a.dataset.date) - Number(b.dataset.date);
+      return activeSort === "asc" ? diff : -diff;
+    });
+
+    postItems.forEach((el) => el.remove());
+    sorted.forEach((el) => postsList.appendChild(el));
+
+    const hidden = postItems.filter(
+      (el) => activeYear !== "all" && el.dataset.year !== activeYear
+    );
+    hidden.forEach((el) => el.remove());
+
+    noResults.classList.toggle("hidden", filtered.length > 0);
+  }
+
+  document.querySelectorAll<HTMLButtonElement>(".year-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      activeYear = btn.dataset.year!;
+      document.querySelectorAll(".year-btn").forEach((b) => b.classList.remove("active-year"));
+      btn.classList.add("active-year");
+      render();
+    });
+  });
+
+  document.getElementById("sort-desc")!.addEventListener("click", () => {
+    activeSort = "desc";
+    document.querySelectorAll(".sort-btn").forEach((b) => b.classList.remove("active-sort"));
+    document.getElementById("sort-desc")!.classList.add("active-sort");
+    render();
+  });
+
+  document.getElementById("sort-asc")!.addEventListener("click", () => {
+    activeSort = "asc";
+    document.querySelectorAll(".sort-btn").forEach((b) => b.classList.remove("active-sort"));
+    document.getElementById("sort-asc")!.classList.add("active-sort");
+    render();
+  });
+</script>

@@ -4,17 +4,28 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import {Config} from "~/config.ts";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
+  const posts = (await getCollection("posts")).sort(
+    (a, b) =>
+      new Date(a.data.publishedOn).getTime() -
+      new Date(b.data.publishedOn).getTime()
+  );
 
-  return posts.map((post) => ({
+  return posts.map((post, index) => ({
     params: { slug: post.slug },
-    props: { post },
+    props: {
+      post,
+      prevPost: index > 0 ? posts[index - 1] : null,
+      nextPost: index < posts.length - 1 ? posts[index + 1] : null,
+    },
   }));
 }
+
 interface Props {
   post: CollectionEntry<"posts">;
+  prevPost: CollectionEntry<"posts"> | null;
+  nextPost: CollectionEntry<"posts"> | null;
 }
-const { post } = Astro.props;
+const { post, prevPost, nextPost } = Astro.props;
 const formattedPublishedAtDate = new Date(post.data.publishedOn).toLocaleDateString(
   "en-us",
   {
@@ -53,6 +64,31 @@ const { Content } = await post.render();
       <div class="blog-content">
         <Content />
       </div>
+      
+      <nav class="flex gap-4 mt-16 pt-8 border-t border-section-divider not-prose">
+        {prevPost && (
+          <a
+            href={`/blogs/${prevPost.slug}`}
+            class="flex-1 flex flex-col gap-1 px-4 py-3 border border-dashed border-gray-300 dark:border-gray-700 rounded hover:border-gray-500 dark:hover:border-primary transition-colors"
+          >
+            <span class="text-xs text-secondary">← Previous</span>
+            <span class="text-sm font-medium text-primary line-clamp-2">{prevPost.data.title}</span>
+          </a>
+        )}
+        {!prevPost && <div class="flex-1" />}
+        {nextPost && (
+          <a
+            href={`/blogs/${nextPost.slug}`}
+            class="flex-1 flex flex-col gap-1 px-4 py-3 border border-dashed border-gray-300 dark:border-gray-700 rounded hover:border-gray-500 dark:hover:border-primary transition-colors text-right"
+          >
+            <span class="text-xs text-secondary">Next →</span>
+            <span class="text-sm font-medium text-primary line-clamp-2">{nextPost.data.title}</span>
+          </a>
+        )}
+        {!nextPost && <div class="flex-1" />}
+      </nav>
+
+
     </article>
    </main>
 </Layout>
