@@ -33,7 +33,7 @@ npm run dev
 ## Connect
 
 - GitHub: [yun-snow](https://github.com/yun-snow)
-- LinkedIn: [YOUR_NAME](https://www.linkedin.com/in/youenn-esnault/)
+- LinkedIn: [Youenn Esnault](https://www.linkedin.com/in/youenn-esnault/)
 - Email: [esnaultyouenn@gmail.com](mailto:esnaultyouenn@gmail.com)
 
 ## License
