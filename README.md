@@ -1,7 +1,6 @@
 # Personal Portfolio & Blog
 
-My personal portfolio and blog where I share projects, write about AI/ML engineering, and document my journey building with LLMs, RAG pipelines, and agentic systems.
-
+My personal portfolio and blog where I share projects and write about AI/ML engineering.
 ## 🛠️ Technologies used
 
 - ⚡️ Astro.js (^4.10.1)
@@ -33,12 +32,12 @@ npm run dev
 
 ## Connect
 
-- GitHub: [YOUR_GITHUB_USERNAME](https://github.com/YOUR_GITHUB_USERNAME)
-- LinkedIn: [YOUR_NAME](https://www.linkedin.com/in/YOUR_LINKEDIN)
-- Email: [YOUR_EMAIL](mailto:YOUR_EMAIL)
+- GitHub: [yun-snow](https://github.com/yun-snow)
+- LinkedIn: [YOUR_NAME](https://www.linkedin.com/in/youenn-esnault/)
+- Email: [esnaultyouenn@gmail.com](mailto:esnaultyouenn@gmail.com)
 
 ## License
 
-Based on the [Sanjib Roy portfolio template](https://sanjibroy.com/) — used under the MIT License with Attribution. Attribution link is included in the site footer as required.
+Based on the [Sanjib Roy portfolio template](https://github.com/sanjibroy360/sanjib-roy-developer-portfolio) — used under the MIT License with Attribution. Attribution link is included in the site footer as required.
 
 For details, view the [LICENSE](./LICENSE) file.
