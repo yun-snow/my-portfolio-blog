@@ -295,7 +295,7 @@ export const Config: IConfig = {
   app: {
     author: "Youenn Esnault",
     site_name: "Youenn Esnault",
-    description: `Experienced Full Stack Software Developer skilled in MERN stack, Next.js, Ruby on Rails, with overall ${
+    description: `Experienced Data Scientist skilled in data analysis, machine learning and deep learning ${
       +getYearsOfExperience("2025-01-01") || "less than 1"
     }+ ${
       +getYearsOfExperience("2025-01-01") > 1 ? "years" : "year"
