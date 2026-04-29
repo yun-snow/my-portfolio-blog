@@ -68,7 +68,7 @@ const { Content } = await post.render();
       <nav class="flex gap-4 mt-16 pt-8 border-t border-section-divider not-prose">
         {prevPost && (
           <a
-            href={`/blogs/${prevPost.slug}`}
+            href={`/my-portfolio-blog/blogs/${prevPost.slug}`}
             class="flex-1 flex flex-col gap-1 px-4 py-3 border border-dashed border-gray-300 dark:border-gray-700 rounded hover:border-gray-500 dark:hover:border-primary transition-colors"
           >
             <span class="text-xs text-secondary">← Previous</span>
@@ -78,7 +78,7 @@ const { Content } = await post.render();
         {!prevPost && <div class="flex-1" />}
         {nextPost && (
           <a
-            href={`/blogs/${nextPost.slug}`}
+            href={`/my-portfolio-blog/blogs/${nextPost.slug}`}
             class="flex-1 flex flex-col gap-1 px-4 py-3 border border-dashed border-gray-300 dark:border-gray-700 rounded hover:border-gray-500 dark:hover:border-primary transition-colors text-right"
           >
             <span class="text-xs text-secondary">Next →</span>
